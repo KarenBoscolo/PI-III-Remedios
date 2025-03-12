@@ -53,7 +53,7 @@ export default function Register() {
   ) => {
     try {    
       
-      const { status,data } = await api.post("usuarios", values).then((response) => {
+      const { status,data } = await api.post("cadastro", values).then((response) => {
         return response
       }).catch((error) => {
         console.log(error)
@@ -62,10 +62,7 @@ export default function Register() {
       console.log(status)
 
       if (data === 'Nome de usuário já existe!')
-        toast.error("Nome de usuário já existe!")
-
-
-      
+        toast.error("Nome de usuário já existe!")      
 
       if (status === 201 || status === 200) {
         toast.success("Usuário cadastrado com sucesso!")

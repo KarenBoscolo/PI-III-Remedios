@@ -48,14 +48,13 @@ export default function Login() {
     { resetForm }: FormikHelpers<FormData>
   ) => {
     try {
-     
-      const response = await api.post(`login`,values)
-      
-      
+
+      const response = await api.get(`cadastro?email=${values.email}&senha=${values.senha}`)
+
       if (response.status == 200) {
         toast.success("Seja bem-vindo(a)!")
 
-        const user = response.data      
+        const user = response.data
 
         putUserData(user)
 
@@ -69,7 +68,7 @@ export default function Login() {
         }, 1500)
       }
 
-      else{
+      else {
         toast.error("Usuário não encontrado!")
         return
       }
@@ -96,7 +95,7 @@ export default function Login() {
           </VisuallyHidden>
           <Image
             src={Logo}
-            alt="Logo Ecum Detailing"
+            alt="Logo Remédio Solidário"
             boxSize="80px"
             mb="8"
             margin="0 auto"
