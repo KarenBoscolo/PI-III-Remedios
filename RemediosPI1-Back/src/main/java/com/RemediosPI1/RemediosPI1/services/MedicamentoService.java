@@ -1,5 +1,6 @@
 package com.RemediosPI1.RemediosPI1.services;
 
+import com.RemediosPI1.RemediosPI1.enums.TarjaMedicamento;
 import com.RemediosPI1.RemediosPI1.models.MedicamentoModel;
 import com.RemediosPI1.RemediosPI1.models.UsuarioModel;
 
@@ -11,6 +12,8 @@ public interface MedicamentoService {
     Optional<MedicamentoModel> getMedicamentoById(Long id);
     MedicamentoModel saveMedicamento(MedicamentoModel medicamento);
     void deleteMedicamento(Long id);
+
+    List<MedicamentoModel> getMedicamentosByTarja(TarjaMedicamento tarja);
 
     interface UsuarioService {
         Optional<UsuarioModel> autenticar(String nomeUsuario, String senha);
