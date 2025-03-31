@@ -54,5 +54,6 @@ public class MedicamentoController {
     public ResponseEntity<List<MedicamentoModel>> getMedicamentosByTarja(@PathVariable TarjaMedicamento tarja) {
         List<MedicamentoModel> medicamentos = medicamentoService.getMedicamentosByTarja(tarja);
         return ResponseEntity.ok(medicamentos);
+
     }
 }
