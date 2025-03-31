@@ -1,5 +1,6 @@
 package com.RemediosPI1.RemediosPI1.services.impl;
 
+import com.RemediosPI1.RemediosPI1.enums.TarjaMedicamento;
 import com.RemediosPI1.RemediosPI1.models.MedicamentoModel;
 import com.RemediosPI1.RemediosPI1.repositories.MedicamentoRepository;
 import com.RemediosPI1.RemediosPI1.services.MedicamentoService;
@@ -26,11 +27,19 @@ public class MedicamentoServiceImpl implements MedicamentoService {
 
     @Override
     public MedicamentoModel saveMedicamento(MedicamentoModel medicamento) {
+        if (medicamento.getTarja() == null) {
+            throw new IllegalArgumentException("A tarja do medicamento é obrigatória.");
+        }
         return medicamentoRepository.save(medicamento);
     }
 
     @Override
     public void deleteMedicamento(Long id) {
         medicamentoRepository.deleteById(id);
+    }
+
+    @Override
+    public List<MedicamentoModel> getMedicamentosByTarja(TarjaMedicamento tarja) {
+        return medicamentoRepository.findByTarja(tarja);
     }
 }
