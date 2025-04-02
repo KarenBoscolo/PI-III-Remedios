@@ -10,4 +10,5 @@ public class RemediosPi1Application {
 		SpringApplication.run(RemediosPi1Application.class, args);
 	}
 
+
 }
