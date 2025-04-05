@@ -1,12 +1,13 @@
 import { Box, Button, Flex, FormControl, FormLabel, Heading, Input, Text } from '@chakra-ui/react'
 import { Footer, Header } from '../../components'
 import { Formik, Field, Form, FormikHelpers } from 'formik'
+import { IoSearch } from "react-icons/io5"
 import * as Yup from 'yup'
 import { api } from '../../services/api'
 import { toast } from 'react-toastify'
 
 interface FormData {
-  
+
   cpf: string
   nome: string
   rua: string
@@ -47,7 +48,7 @@ const validateCPF = (cpf: string) => {
 
 const Patient = () => {
   const initialValues: FormData = {
-   
+
     cpf: "",
     nome: "",
     rua: "",
@@ -72,6 +73,34 @@ const Patient = () => {
     uf: Yup.string().required('O estado é obrigatório'),
     telefone: Yup.string().required('O telefone é obrigatório').matches(/^\(\d{2}\) \d{4,5}-\d{4}$/, 'Telefone inválido'),
   })
+
+  const zipCodeConsultation = (
+    // e: React.FocusEvent<HTMLInputElement>,
+    setFieldValue: (field: string, value: unknown, shouldValidate?: boolean) => void,
+    setFieldTouched: (field: string, isTouched?: boolean, shouldValidate?: boolean) => void,
+    cep: string
+  ) => {
+    const sanitizedCep = cep.replace(/\D/g, '')
+
+    if (sanitizedCep.length !== 8) return
+
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then(res => res.json())
+      .then((data: { logradouro?: string; bairro?: string; localidade?: string; uf?: string }) => {
+        console.log(data)
+        setFieldValue('rua', data.logradouro || '')
+        setFieldValue('bairro', data.bairro || '')
+        setFieldValue('cidade', data.localidade || '')
+        setFieldValue('uf', data.uf || '')
+        setFieldTouched('numero', true)
+
+        setTimeout(() => {
+          document.getElementById('numero')?.focus()
+        }, 100)
+
+      })
+      .catch(error => console.error("Erro ao buscar CEP:", error))
+  }
 
   const handleSubmitForm = async (values: FormData, { resetForm }: FormikHelpers<FormData>) => {
 
@@ -109,7 +138,7 @@ const Patient = () => {
           validationSchema={validationSchema}
           onSubmit={handleSubmitForm}
         >
-          {({ errors, setFieldValue, values, touched }) => (
+          {({ errors, setFieldValue, setFieldTouched, values, touched }) => (
             <Form>
               <FormControl mt={7} position='relative'>
                 <FormLabel htmlFor='cpf' aria-labelledby="cpf" color='#808080'>CPF do paciente</FormLabel>
@@ -155,14 +184,26 @@ const Patient = () => {
 
               <FormControl mt={7}>
                 <FormLabel color='#808080'>Endereço do paciente</FormLabel>
-                <FormControl display='flex' alignItems='center' gap={15}>
-                  <FormControl w='350px' position='relative'>
-                    <Field as={Input} id='cep' name='cep' type='text' placeholder='CEP' data-testid="cep" />
+                <FormControl display='flex' alignItems='center' gap={15} >
+                  <FormControl w='300px' position='absolute'>
+                    <Field
+                      as={Input}
+                      id='cep'
+                      name='cep'
+                      type='text'
+                      placeholder='CEP'
+                      data-testid="cep"
+                    />
                     {errors.cep && touched.cep && <Text color='#ff0000' fontSize={14} fontWeight='500' pl={1} position='absolute' left={0} bottom='-20px'>{errors.cep}</Text>}
                   </FormControl>
+                  <Button variant="plain" position='relative' left='250px'
+                    onClick={() => zipCodeConsultation(setFieldValue, setFieldTouched, values.cep)}
+                  >
+                    <IoSearch color='#247ba0' />
+                  </Button>
                 </FormControl>
               </FormControl>
-              
+
               <FormControl mt={7}>
                 <FormControl display='flex' alignItems='center' gap={15}>
                   <FormControl position='relative'>
@@ -170,7 +211,7 @@ const Patient = () => {
                     {errors.rua && touched.rua && <Text color='#ff0000' fontSize={14} fontWeight='500' pl={1} position='absolute' left={0} bottom='-20px'>{errors.rua}</Text>}
                   </FormControl>
                   <FormControl w='350px' position='relative'>
-                    <Field as={Input} id='numero' name='numero' type='text' placeholder='Número' data-testid="numero"/>
+                    <Field as={Input} id='numero' name='numero' type='text' placeholder='Número' data-testid="numero" />
                     {errors.numero && touched.numero && <Text color='#ff0000' fontSize={14} fontWeight='500' pl={1} position='absolute' left={0} bottom='-20px'>{errors.numero}</Text>}
                   </FormControl>
                 </FormControl>
@@ -179,11 +220,11 @@ const Patient = () => {
               <FormControl mt={7}>
                 <FormControl display='flex' alignItems='center' gap={15}>
                   <FormControl position='relative'>
-                    <Field as={Input} id='bairro' name='bairro' type='text' placeholder='Informe o bairro' data-testid="bairro"/>
+                    <Field as={Input} id='bairro' name='bairro' type='text' placeholder='Informe o bairro' data-testid="bairro" />
                     {errors.bairro && touched.bairro && <Text color='#ff0000' fontSize={14} fontWeight='500' pl={1} position='absolute' left={0} bottom='-20px' >{errors.bairro}</Text>}
                   </FormControl>
                   <FormControl position='relative'>
-                    <Field as={Input} id='complemento' name='complemento' type='text' placeholder='Complemento' data-testid="complemento"/>
+                    <Field as={Input} id='complemento' name='complemento' type='text' placeholder='Complemento' data-testid="complemento" />
                   </FormControl>
                 </FormControl>
               </FormControl>
@@ -191,11 +232,11 @@ const Patient = () => {
               <FormControl mt={7}>
                 <FormControl display='flex' alignItems='center' gap={15}>
                   <FormControl position='relative'>
-                    <Field as={Input} id='cidade' name='cidade' type='text' placeholder='Informe a cidade' data-testid="cidade"/>
+                    <Field as={Input} id='cidade' name='cidade' type='text' placeholder='Informe a cidade' data-testid="cidade" />
                     {errors.cidade && touched.cidade && <Text color='#ff0000' fontSize={14} fontWeight='500' pl={1} position='absolute' left={0} bottom='-20px'>{errors.cidade}</Text>}
                   </FormControl>
                   <FormControl w='350px' position='relative'>
-                    <Field as={Input} id='uf' name='uf' type='text' placeholder='Informe o UF' data-testid="uf"/>
+                    <Field as={Input} id='uf' name='uf' type='text' placeholder='Informe o UF' data-testid="uf" />
                     {errors.uf && touched.uf && <Text color='#ff0000' fontSize={14} fontWeight='500' pl={1} position='absolute' left={0} bottom='-20px'>{errors.uf}</Text>}
                   </FormControl>
                 </FormControl>
