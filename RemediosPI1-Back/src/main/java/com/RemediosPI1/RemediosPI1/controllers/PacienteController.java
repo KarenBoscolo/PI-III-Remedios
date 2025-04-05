@@ -20,8 +20,7 @@ public class PacienteController {
 
     @GetMapping
     public ResponseEntity<List<PacienteModel>> getAllPacientes() {
-        List<PacienteModel> pacientes = pacienteService.getAllPacientes();
-        return ResponseEntity.ok(pacientes);
+        return ResponseEntity.ok(pacienteService.getAllPacientes());
     }
 
     @GetMapping("/{id}")
@@ -31,8 +30,8 @@ public class PacienteController {
     }
 
     @PostMapping
-    public ResponseEntity<PacienteModel> savePaciente(@RequestBody PacienteModel paciente) {
-        PacienteModel savedPaciente = pacienteService.savePaciente(paciente);
+    public ResponseEntity<PacienteModel> savePaciente(@RequestBody PacienteModel paciente, @RequestParam String cep) {
+        PacienteModel savedPaciente = pacienteService.savePaciente(paciente, cep);
         return ResponseEntity.ok(savedPaciente);
     }
 

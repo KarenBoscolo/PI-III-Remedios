@@ -1,5 +1,6 @@
 package com.RemediosPI1.RemediosPI1.models;
 
+import com.RemediosPI1.RemediosPI1.enums.TarjaMedicamento;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,9 @@ public class MedicamentoModel {
     private int quantidade;
     @Temporal(TemporalType.DATE)
     private LocalDate vencimento;
+
+    @Enumerated(EnumType.STRING)
+    private TarjaMedicamento tarja;
 
     @ManyToMany(mappedBy = "medicamentos")
     private List<PrescricaoModel> prescricoes;

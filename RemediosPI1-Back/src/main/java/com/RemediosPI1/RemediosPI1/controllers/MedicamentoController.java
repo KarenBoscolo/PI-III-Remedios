@@ -3,6 +3,7 @@ package com.RemediosPI1.RemediosPI1.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import com.RemediosPI1.RemediosPI1.enums.TarjaMedicamento;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,5 +48,12 @@ public class MedicamentoController {
     public ResponseEntity<Void> deleteMedicamento(@PathVariable Long id) {
         medicamentoService.deleteMedicamento(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/tarja/{tarja}")
+    public ResponseEntity<List<MedicamentoModel>> getMedicamentosByTarja(@PathVariable TarjaMedicamento tarja) {
+        List<MedicamentoModel> medicamentos = medicamentoService.getMedicamentosByTarja(tarja);
+        return ResponseEntity.ok(medicamentos);
+
     }
 }
