@@ -1,4 +1,4 @@
-import { Box, Button, Flex, FormControl, FormLabel, Heading, Input, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, FormControl, FormLabel, Heading, Input, Select, Text } from '@chakra-ui/react'
 import { Header } from '../../components'
 import { Formik, Field, Form, FormikHelpers } from 'formik'
 import * as Yup from 'yup'
@@ -6,9 +6,9 @@ import { api } from '../../services/api'
 import { toast } from 'react-toastify'
 
 interface FormData {
-
   formula: string
   quantidade: number
+  tarja: 'SEM_TARJA' | 'AMARELA' | 'VERMELHA' | 'PRETA' | ""
   vencimento: string
 }
 
@@ -16,12 +16,14 @@ const Medicament = () => {
   const initialValues: FormData = {
     formula: "",
     quantidade: 0,
+    tarja: "",
     vencimento: ""
   }
 
   const validationSchema = Yup.object({
     formula: Yup.string().required('Nome do medicamento é obrigatório'),
     quantidade: Yup.number().required('A quantidade é obrigatória'),
+    tarja: Yup.string().required('A tarja é obrigatória'),
     vencimento: Yup.string().required('Data de vencimento é obrigatória'),
   })
 
@@ -77,6 +79,26 @@ const Medicament = () => {
                   }}
                 />
                 {errors.formula && touched.formula && <Text color='#ff0000' fontSize={14} fontWeight='500' pl={1}>{errors.formula}</Text>}
+              </FormControl>
+ 
+              <FormControl mt={7} h='80px'>
+                <FormLabel htmlFor='tarja' color='#808080'>Tarja</FormLabel>
+                <Field 
+                  as={Select}
+                  id="tarja" 
+                  name="tarja" 
+                  _focus={{
+                    borderColor: "gray.700",
+                    boxShadow: "none",
+                  }}
+                >
+                  <option value="">Selecione a tarja...</option>
+                  <option value="SEM_TARJA">Sem tarja</option>
+                  <option value="AMARELA">Amarela</option>
+                  <option value="VERMELHA">Vermelha</option>
+                  <option value="PRETA">Preta</option>
+                </Field>
+                {errors.tarja && touched.tarja && <Text color='#ff0000' fontSize={14} fontWeight='500' pl={1}>{errors.tarja}</Text>}
               </FormControl>
 
               <FormControl mt={7} h='80px'>
