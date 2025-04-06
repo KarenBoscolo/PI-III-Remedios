@@ -46,7 +46,7 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
             key={page}
             onClick={() => onPageChange(page)}
             variant={currentPage === page ? 'solid' : 'outline'}
-            colorScheme="blue"
+            colorScheme="green"
             mr={2}
           >
             {page}

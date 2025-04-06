@@ -27,11 +27,11 @@ const BaseModal = ({
     <ModalChakra isOpen={isOpen} onClose={onClose} isCentered {...rest} >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader color='#247ba0' textAlign={'center'}>
+        <ModalHeader color='#00834F' textAlign={'center'}>
           {modalHeaderText}
         </ModalHeader>
         {showCloseButton &&
-          <ModalCloseButton color='#247ba0' />
+          <ModalCloseButton color='#00834F' />
         }
         <ModalBody>{children}</ModalBody>
         <ModalFooter>{modalFooter}</ModalFooter>

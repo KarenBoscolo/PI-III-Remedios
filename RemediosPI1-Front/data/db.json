@@ -1,4 +1,4 @@
-{  
+{
   "cadastro": [
     {
       "id": "6458",
@@ -7,7 +7,7 @@
       "senha": "marimari"
     }
   ],
-  "paciente": [
+  "pacientes": [
     {
       "id": "36b9",
       "cpf": "541.457.444-77",
@@ -47,11 +47,11 @@
       "endereco": "Rua Joaquim Azanh"
     }
   ],
-  "medicamento": [
+  "medicamentos": [
     {
       "id": "072d",
       "formula": "Dipirona",
-      "quantidade": 10,
+      "quantidade": "9",
       "vencimento": "2024-11-20"
     },
     {
@@ -61,7 +61,7 @@
       "vencimento": "2025-01-10"
     }
   ],
-  "prescricao": [
+  "prescricoes": [
     {
       "id": "229f",
       "data": "2024-11-02",
@@ -89,6 +89,36 @@
           "formula": "Dipirona",
           "quantidade": 5,
           "vencimento": "2024-11-20"
+        }
+      ]
+    },
+    {
+      "id": "c766",
+      "data": "2025-04-06",
+      "paciente": {
+        "id": "36b9",
+        "cpf": "541.457.444-77",
+        "nome": "Maria das Dores",
+        "rua": "Rua da Saudade",
+        "numero": "41",
+        "bairro": "Centro",
+        "complemento": "Casa",
+        "cidade": "Rio Pardo",
+        "uf": "SP",
+        "telefone": "(19) 52545-4585"
+      },
+      "medicamentos": [
+        {
+          "id": "072d",
+          "formula": "Dipirona",
+          "quantidade": 10,
+          "vencimento": "2024-11-20"
+        },
+        {
+          "id": "9c30",
+          "formula": "Sorine",
+          "quantidade": 4,
+          "vencimento": "2025-01-10"
         }
       ]
     }

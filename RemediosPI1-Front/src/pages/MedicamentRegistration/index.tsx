@@ -1,5 +1,5 @@
 import { Box, Table, Thead, Tbody, Tr, Th, Td, TableContainer, Button, Flex, Tooltip, Input, FormControl, FormLabel, Heading } from '@chakra-ui/react'
-import { Footer, Header, BaseModal, Pagination } from '../../components'
+import { Header, BaseModal, Pagination } from '../../components'
 import { MdOutlineEdit, MdDeleteOutline } from 'react-icons/md'
 import { api } from '../../services/api'
 import { useEffect, useState } from 'react'
@@ -94,14 +94,14 @@ const MedicamentRegistration = () => {
   return (
     <>
       <Header />
-      <Flex direction='column' height='calc(100vh - 115px)' p={8} >
+      <Flex direction='column' height='calc(100vh - 75px)' p={8} >
         <Heading as="h1" fontWeight="bold" fontSize='xl' mb={8}>Medicamentos cadastrados</Heading>
         <Box height="60vh" overflowY="auto" >
           <TableContainer>
-            <Table variant='simple' colorScheme='blue'>
+            <Table variant='simple'>
               <Thead>
                 <Tr>
-                  <Th>Nome Medicamento</Th>
+                  <Th>Medicamento</Th>
                   <Th>Quantidade</Th>
                   <Th>Data de Validade</Th>
                   <Th></Th>
@@ -140,13 +140,23 @@ const MedicamentRegistration = () => {
           onPageChange={handlePageChange}
         />
       </Flex>
-      <Footer />
 
       <BaseModal
         isOpen={isEditModalOpen}
         onClose={handleModalClose}
         modalHeaderText="Editar Dados do Medicamento"
-        modalFooter={<Button type="submit" colorScheme="blue" mt={3} onClick={handleSubmit}>Salvar</Button>}
+        modalFooter={<Button
+          type="submit"
+          mt={3}
+          bg="#00834F"
+          color="#FFF"
+          _hover={{
+            color: "#00834F",
+            bg: "transparent",
+            border: "1px solid #00834F"
+          }}
+          onClick={handleSubmit}
+        >Salvar</Button>}
       >
         <Box as="form" >
           <FormControl>

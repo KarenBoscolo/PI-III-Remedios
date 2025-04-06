@@ -15,7 +15,7 @@ import {
   FormLabel,
   Heading,
 } from "@chakra-ui/react"
-import { Footer, Header, BaseModal, Pagination } from "../../components"
+import { Header, BaseModal, Pagination } from "../../components"
 import { MdOutlineEdit, MdDeleteOutline } from "react-icons/md"
 import { api } from "../../services/api"
 import { useEffect, useState } from "react"
@@ -118,17 +118,17 @@ const PatientRegistration = () => {
   return (
     <>
       <Header />
-      <Flex direction="column" height="calc(100vh - 115px)" p={8}>
+      <Flex direction="column" height="calc(100vh - 75px)" p={8}>
         <Heading as="h1" fontWeight="bold" fontSize="xl" mb={8}>
           Pacientes cadastrados
         </Heading>
         <Box height="60vh" overflowY="auto">
           <TableContainer>
-            <Table variant="simple" colorScheme="blue">
+            <Table variant="simple">
               <Thead>
                 <Tr>
                   <Th>CPF</Th>
-                  <Th>Nome Paciente</Th>
+                  <Th>Paciente</Th>
                   <Th>Endereço</Th>
                   <Th></Th>
                 </Tr>
@@ -172,7 +172,6 @@ const PatientRegistration = () => {
           onPageChange={handlePageChange}
         />
       </Flex>
-      <Footer />
 
       <BaseModal
         isOpen={isEditModalOpen}
@@ -181,8 +180,14 @@ const PatientRegistration = () => {
         modalFooter={
           <Button
             type="submit"
-            colorScheme="blue"
             mt={3}
+            bg="#00834F"
+            color="#FFF"
+            _hover={{
+              color: "#00834F",
+              bg: "transparent",
+              border: "1px solid #00834F"
+            }}
             onClick={handleSubmit}
           >
             Salvar
@@ -200,7 +205,7 @@ const PatientRegistration = () => {
             />
           </FormControl>
           <FormControl>
-            <FormLabel mt={4}>Nome do Paciente</FormLabel>
+            <FormLabel mt={4}>Nome</FormLabel>
             <Input
               type="text"
               name="nome"

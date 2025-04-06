@@ -5,7 +5,7 @@ import {
   Image, Heading
 } from '@chakra-ui/react'
 import { Formik, Form, FormikHelpers, Field } from 'formik'
-import { Footer, Header, MultSelect, BaseModal } from '../../components'
+import { Header, MultSelect, BaseModal } from '../../components'
 import { MdDeleteOutline } from 'react-icons/md'
 import { toast } from 'react-toastify'
 import { api } from '../../services/api'
@@ -110,7 +110,7 @@ const Dispensation = () => {
     const fetchPatients = async () => {
       try {
         const response = await api.get('/pacientes')
-        console.log('data patients: ',response.data)
+        console.log('data patients: ', response.data)
         setPatients(response.data)
       } catch (error) {
         console.error('Erro ao buscar pacientes:', error)
@@ -198,7 +198,7 @@ const Dispensation = () => {
             medicamentoList: postData.medicamentos,
             endereco: endereco
           })
-          
+
         }
         if (status === 409) {
           toast.error('Envie novamente')
@@ -214,7 +214,7 @@ const Dispensation = () => {
     <>
       <Header />
       <Box
-        height='calc(100vh - 115px)'
+        height='calc(100vh - 75px)'
         p={8}
       >
         <Formik
@@ -229,6 +229,8 @@ const Dispensation = () => {
                   <Heading as="h1" fontWeight='bold' fontSize='xl'>Dispensação de Medicamentos</Heading>
                   <FormControl w='300px'>
                     <Input
+                      textAlign="right"
+                      color='#808080'
                       name='date'
                       variant='unstyled'
                       value={formattedDate(values.data)}
@@ -244,6 +246,10 @@ const Dispensation = () => {
                     id='paciente'
                     name='paciente'
                     placeholder='Selecione o nome do paciente'
+                    _focus={{
+                      borderColor: "gray.700",
+                      boxShadow: "none"
+                    }}
                     w='73%'
                     onChange={e => {
                       const paciente = patients.find(patient => patient.id === e.target.value)
@@ -301,6 +307,10 @@ const Dispensation = () => {
                       type="number"
                       name="quantidade"
                       placeholder="Quantidade"
+                      _focus={{
+                        borderColor: "gray.700",
+                        boxShadow: "none",
+                      }}
                       value={values.quantidade || ''}
                     />
                     {message !== '' && (
@@ -336,10 +346,10 @@ const Dispensation = () => {
 
                 <Box height="20vh" overflowY="auto" mt={7}>
                   <TableContainer>
-                    <Table variant='simple' size='sm' colorScheme='blue'>
+                    <Table variant='simple' size='sm'>
                       <Thead>
                         <Tr>
-                          <Th>Nome Medicamento</Th>
+                          <Th>Medicamento</Th>
                           <Th>Quantidade</Th>
                           <Th></Th>
                         </Tr>
@@ -366,11 +376,17 @@ const Dispensation = () => {
                 </Box>
                 <Flex justify={'flex-end'}>
                   <Button
-                    mt={10}
-                    variant='outline'
-                    type='submit'
-                    colorScheme='blue'
+                    bg="#00834F"
+                    color="#FFF"
                     width='20%'
+                    mt="200px"
+                    fontWeight="bold"
+                    _hover={{
+                      color: "#00834F",
+                      bg: "transparent",
+                      border: "1px solid #00834F"
+                    }}
+                    type='submit'
                   > Dispensar
                   </Button>
                 </Flex>
@@ -379,7 +395,7 @@ const Dispensation = () => {
           }}
         </Formik>
       </Box>
-      <Footer />
+
       <BaseModal
         size='xl'
         isOpen={isEditModalOpen}
@@ -390,14 +406,37 @@ const Dispensation = () => {
             type="submit"
             colorScheme="blue"
             mt={3}
+            bg="#00834F"
+            color="#FFF"
+            _hover={{
+              color: "#00834F",
+              bg: "transparent",
+              border: "1px solid #00834F"
+            }}
             onClick={handlePrint}
             display={['none', 'block']}
           >
             Imprimir
           </Button>}
       >
-        <Flex w='100%' h='70px' p={2} alignItems='center' justify='center' bg='#808080' borderRadius={2} aria-label='Logo Projeto Remédio' role='img'>
-          <Image src={LogoRemedioSolidario} alt="Logo Projeto Remédio" w='auto' h='50px' width='auto' height='50px' />
+        <Flex
+          w='100%'
+          h='70px'
+          p={2}
+          alignItems='center'
+          justify='center'
+          bg='#808080'
+          borderRadius={2}
+          aria-label='Logo Projeto Remédio'
+          role='img'
+        >
+          <Image
+            src={LogoRemedioSolidario}
+            alt="Logo Projeto Remédio"
+            w='auto' h='50px'
+            width='auto'
+            height='50px'
+          />
         </Flex>
         <Box>
           <Flex p={5} justify='center'>
@@ -446,7 +485,7 @@ const Dispensation = () => {
                 <Flex>
                   <Input type="text" value={medicamento.formula} w='70%' variant='unstyled' isReadOnly />
                   <Flex >
-                    <Input type="text" value={medicamento.quantidade} w='15%' variant='unstyled' isReadOnly />
+                    <Input type="text" value={medicamento.quantidade} w='15%' variant='unstyled' alignContent='' isReadOnly />
                     <Text fontSize="sm" >UN - Comprimidos/Capsulas</Text>
                   </Flex>
                 </Flex>

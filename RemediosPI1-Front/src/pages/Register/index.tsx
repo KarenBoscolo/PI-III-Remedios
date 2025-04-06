@@ -1,5 +1,5 @@
 import Logo from "../../assets/logo.png"
-import Background from "../../assets/background-home.jpg"
+import Background from "../../assets/background.jpg"
 
 import {
   Flex,
@@ -51,9 +51,9 @@ export default function Register() {
     values: FormData,
     { resetForm }: FormikHelpers<FormData>
   ) => {
-    try {    
-      
-      const { status,data } = await api.post("cadastro", values).then((response) => {
+    try {
+
+      const { status, data } = await api.post("cadastro", values).then((response) => {
         return response
       }).catch((error) => {
         console.log(error)
@@ -62,7 +62,7 @@ export default function Register() {
       console.log(status)
 
       if (data === 'Nome de usuário já existe!')
-        toast.error("Nome de usuário já existe!")      
+        toast.error("Nome de usuário já existe!")
 
       if (status === 201 || status === 200) {
         toast.success("Usuário cadastrado com sucesso!")
@@ -87,7 +87,7 @@ export default function Register() {
       >
         <Box
           boxSize="lg"
-          bg="#247ba0"
+          bg="#00834F"
           p="10"
           borderRadius="md"
           boxShadow="md"
@@ -123,9 +123,13 @@ export default function Register() {
                       type="text"
                       autoComplete="current-name"
                       placeholder="Digite seu nome"
+                      _focus={{
+                        borderColor: "gray.700",
+                        boxShadow: "none",
+                      }}
                       sx={{
                         "::placeholder": {
-                          color: "gray.800",
+                          color: "gray.700",
                         },
                       }}
                     />
@@ -152,9 +156,13 @@ export default function Register() {
                       type="email"
                       autoComplete="email"
                       placeholder="Digite seu e-mail"
+                      _focus={{
+                        borderColor: "gray.700",
+                        boxShadow: "none",
+                      }}
                       sx={{
                         "::placeholder": {
-                          color: "gray.800",
+                          color: "gray.700",
                         },
                       }}
                     />
@@ -171,7 +179,7 @@ export default function Register() {
                   </FormControl>
 
                   <FormControl h="60px">
-                    <FormLabel htmlFor="senha" aria-labelledby="senha"  color="#fff">
+                    <FormLabel htmlFor="senha" aria-labelledby="senha" color="#fff">
                       Senha
                     </FormLabel>
                     <Field
@@ -181,9 +189,13 @@ export default function Register() {
                       type="password"
                       autoComplete="current-password"
                       placeholder="Digite sua senha"
+                      _focus={{
+                        borderColor: "gray.700",
+                        boxShadow: "none",
+                      }}
                       sx={{
                         "::placeholder": {
-                          color: "gray.800",
+                          color: "gray.700",
                         },
                       }}
                     />
@@ -199,33 +211,36 @@ export default function Register() {
                     )}
                   </FormControl>
 
-                  <Button
-                    type="submit"
-                    variant="outline"
-                    color="white"
-                    width="150px"
-                    mt="12px"
-                    _hover={{
-                      color: "#247ba0",
-                      bg: "white",
-                    }}
-                  >
-                    Cadastrar
-                  </Button>
+                  <Flex direction="column" align="center">
+                    <Button
+                      type="submit"
+                      color="#00834F"
+                      width="150px"
+                      mt="5px"
+                      fontWeight="bold"
+                      _hover={{
+                        color: "#FFF",
+                        bg: "transparent",
+                        border: "1px solid #FFF"
+                      }}
+                    >
+                      Cadastrar
+                    </Button>
 
-                  <Text
-                    color="#000"
-                    fontSize="sm"
-                    mt="20px"
-                    position="absolute"
-                    bottom="30px"
-                    right="45px"
-                  >
-                    Já possuo cadastro! { }
-                    <Link as={RouterLink} to="/" fontWeight="bold">
-                      Entrar
-                    </Link>
-                  </Text>
+                    <Text
+                      color="#FFF"
+                      fontSize="sm"
+                      mt="10px"
+
+                      bottom="30px"
+                      right="45px"
+                    >
+                      Já possuo cadastro! { }
+                      <Link as={RouterLink} to="/" fontWeight="bold">
+                        Entrar
+                      </Link>
+                    </Text>
+                  </Flex>
                 </Flex>
               </Form>
             )}

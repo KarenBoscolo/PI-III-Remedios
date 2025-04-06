@@ -40,6 +40,10 @@ const MultiSelect: React.FC<MultiSelectProps> = ({ options, onChange, name, inpu
           <AutoCompleteInput
             value={inputValue}
             placeholder="Buscar..."
+            _focus={{
+              borderColor: "gray.700",
+              boxShadow: "none",
+            }}
             autoComplete="off" />
         </InputGroup>
         <AutoCompleteList>

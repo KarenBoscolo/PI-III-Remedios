@@ -1,5 +1,5 @@
 import Logo from "../../assets/logo.png"
-import Background from "../../assets/background-home.jpg"
+import Background from "../../assets/background.jpg"
 
 import {
   Flex,
@@ -89,7 +89,7 @@ export default function Login() {
         bgSize="cover"
         bgRepeat="no-repeat"
       >
-        <Box boxSize="md" bg="#247ba0" p="10" borderRadius="md" boxShadow="md">
+        <Box boxSize="md" bg="#00834F" p="10" borderRadius="md" boxShadow="md">
           <VisuallyHidden>
             <Heading as="h1">Login</Heading>
           </VisuallyHidden>
@@ -121,9 +121,13 @@ export default function Login() {
                     type="login"
                     autoComplete="username"
                     placeholder="Digite o e-mail cadastrado"
+                    _focus={{
+                      borderColor: "gray.700",
+                      boxShadow: "none",
+                    }}
                     sx={{
                       "::placeholder": {
-                        color: "gray.800",
+                        color: "gray.700",
                       },
                     }}
                   />
@@ -145,9 +149,13 @@ export default function Login() {
                     type="password"
                     autoComplete="current-password"
                     placeholder="Digite a senha"
+                    _focus={{
+                      borderColor: "gray.700",
+                      boxShadow: "none",
+                    }}
                     sx={{
                       "::placeholder": {
-                        color: "gray.800",
+                        color: "gray.700",
                       },
                     }}
                   />
@@ -158,26 +166,29 @@ export default function Login() {
                   )}
                 </FormControl>
 
-                <Button
-                  type="submit"
-                  variant="outline"
-                  color="white"
-                  width="150px"
-                  mt="50px"
-                  _hover={{
-                    color: "#247ba0",
-                    bg: "white",
-                  }}
-                >
-                  Entrar
-                </Button>
+                <Flex direction="column" align="center">
+                  <Button
+                    type="submit"
+                    color="#00834F"
+                    width="150px"
+                    mt="50px"
+                    fontWeight="bold"
+                    _hover={{
+                      color: "#FFF",
+                      bg: "transparent",
+                      border: "1px solid #FFF"
+                    }}
+                  >
+                    Entrar
+                  </Button>
 
-                <Text color="#000" fontSize="sm" mt="20px">
-                  Não possui conta?{" "}
-                  <Link as={RouterLink} to="cadastro" fontWeight="bold">
-                    Criar conta
-                  </Link>
-                </Text>
+                  <Text color="#FFF" fontSize="sm" mt="20px">
+                    Não possui conta?{" "}
+                    <Link as={RouterLink} to="cadastro" fontWeight="bold">
+                      Criar conta
+                    </Link>
+                  </Text>
+                </Flex>
               </Form>
             )}
           </Formik>

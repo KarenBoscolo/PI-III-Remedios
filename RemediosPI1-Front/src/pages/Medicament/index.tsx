@@ -1,5 +1,5 @@
 import { Box, Button, Flex, FormControl, FormLabel, Heading, Input, Text } from '@chakra-ui/react'
-import { Footer, Header } from '../../components'
+import { Header } from '../../components'
 import { Formik, Field, Form, FormikHelpers } from 'formik'
 import * as Yup from 'yup'
 import { api } from '../../services/api'
@@ -51,7 +51,7 @@ const Medicament = () => {
     <>
       <Header />
       <Box
-        height='calc(100vh - 115px)'
+        height='calc(100vh - 75px)'
         p={8}
       >
         <Heading as="h1" fontWeight="bold" fontSize='xl'>Cadastro de Medicamentos</Heading>
@@ -71,30 +71,67 @@ const Medicament = () => {
                   name='formula'
                   type='text'
                   placeholder='Digite o nome do medicamento'
+                  _focus={{
+                    borderColor: "gray.700",
+                    boxShadow: "none",
+                  }}
                 />
                 {errors.formula && touched.formula && <Text color='#ff0000' fontSize={14} fontWeight='500' pl={1}>{errors.formula}</Text>}
               </FormControl>
 
               <FormControl mt={7} h='80px'>
                 <FormLabel htmlFor='quantidade' color='#808080'>Quantidade</FormLabel>
-                <Field as={Input} id='quantidade' name='quantidade' type='number' placeholder='Digite a quantidade' width='30%' />
+                <Field
+                  as={Input}
+                  id='quantidade'
+                  name='quantidade'
+                  type='number'
+                  placeholder='Digite a quantidade'
+                  _focus={{
+                    borderColor: "gray.700",
+                    boxShadow: "none",
+                  }}
+                  width='30%'
+                />
                 {errors.quantidade && touched.quantidade && <Text color='#ff0000' fontSize={14} fontWeight='500' pl={1}>{errors.quantidade}</Text>}
               </FormControl>
 
               <FormControl mt={7} h='80px'>
                 <FormLabel htmlFor='vencimento' color='#808080'>Data do vencimento</FormLabel>
-                <Field as={Input} id='vencimento' name='vencimento' type='date' width='30%' />
+                <Field
+                  as={Input}
+                  id='vencimento'
+                  name='vencimento'
+                  type='date'
+                  width='30%'
+                  _focus={{
+                    borderColor: "gray.700",
+                    boxShadow: "none",
+                  }}
+                />
                 {errors.vencimento && touched.vencimento && <Text color='#ff0000' fontSize={14} fontWeight='500' pl={1}>{errors.vencimento}</Text>}
               </FormControl>
 
               <Flex justify={'flex-end'}>
-                <Button mt={14} variant='outline' type='submit' colorScheme='blue' width='20%'>Cadastrar</Button>
+                <Button
+                  bg="#00834F"
+                  color="#FFF"
+                  width='20%'
+                  mt="260px"
+                  fontWeight="bold"
+                  type='submit'
+                  _hover={{
+                    color: "#00834F",
+                    bg: "transparent",
+                    border: "1px solid #00834F"
+                  }}
+                >Cadastrar
+                </Button>
               </Flex>
             </Form>
           )}
         </Formik>
-      </Box>
-      <Footer />
+      </Box>  
     </>
   )
 }

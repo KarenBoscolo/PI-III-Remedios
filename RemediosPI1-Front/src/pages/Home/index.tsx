@@ -32,7 +32,7 @@ const Home: React.FC<HomeProps> = () => {
       <Box
         height="100vh"
         width={menuHidden ? '50px' : '270px'}
-        backgroundColor="#247ba0"
+        backgroundColor="#00834F"
         color="white"
         transition="width 0.2s ease"
       >
@@ -53,7 +53,8 @@ const Home: React.FC<HomeProps> = () => {
                     p={2}
                     cursor="pointer"
                     transition="background-color 0.3s, color 0.3s"
-                    _hover={!menuHidden ? {backgroundColor: 'whiteAlpha.800',color: '#247ba0',borderRadius: '8'}:{}}
+                    fontWeight="bold"
+                    _hover={!menuHidden ? {backgroundColor: 'whiteAlpha.800',color: '#00834F',borderRadius: '8'}:{}}
                     onClick={() => toggleSubmenu(index)}
                   >
                     <Flex align="center" gap={4}>
@@ -81,7 +82,7 @@ const Home: React.FC<HomeProps> = () => {
                           p={1}
                           _hover={{
                             backgroundColor: 'whiteAlpha.800',
-                            color: '#247ba0',
+                            color: '#00834F',
                             borderRadius: '6',
                           }}
                           to={submenuItem.path}
