@@ -87,11 +87,12 @@ export default function Register() {
       >
         <Box
           boxSize="lg"
-          bg="#00834F"
+          bg="#FFF"
           p="10"
           borderRadius="md"
           boxShadow="md"
           position="relative"
+          opacity='0.9'
         >
           <VisuallyHidden>
             <Heading as="h1">Criar Conta</Heading>
@@ -113,7 +114,7 @@ export default function Register() {
               <Form noValidate>
                 <Flex flexDirection="column" gap="35px">
                   <FormControl h="60px">
-                    <FormLabel htmlFor="nomeUsuario" aria-labelledby="nomeUsuario" color="#fff">
+                    <FormLabel htmlFor="nomeUsuario" aria-labelledby="nomeUsuario" color="#00834F">
                       Nome
                     </FormLabel>
                     <Field
@@ -146,7 +147,7 @@ export default function Register() {
                   </FormControl>
 
                   <FormControl h="60px">
-                    <FormLabel htmlFor="email" aria-labelledby="email" color="#fff">
+                    <FormLabel htmlFor="email" aria-labelledby="email" color="#00834F">
                       E-mail
                     </FormLabel>
                     <Field
@@ -179,7 +180,7 @@ export default function Register() {
                   </FormControl>
 
                   <FormControl h="60px">
-                    <FormLabel htmlFor="senha" aria-labelledby="senha" color="#fff">
+                    <FormLabel htmlFor="senha" aria-labelledby="senha" color="#00834F">
                       Senha
                     </FormLabel>
                     <Field
@@ -214,21 +215,22 @@ export default function Register() {
                   <Flex direction="column" align="center">
                     <Button
                       type="submit"
-                      color="#00834F"
+                      bg='#00834F'
+                      color="#FFF"
                       width="150px"
                       mt="5px"
                       fontWeight="bold"
                       _hover={{
-                        color: "#FFF",
+                        color: "#00834F",
                         bg: "transparent",
-                        border: "1px solid #FFF"
+                        border: "1px solid #00834F"
                       }}
                     >
                       Cadastrar
                     </Button>
 
                     <Text
-                      color="#FFF"
+                      color="#00834F"
                       fontSize="sm"
                       mt="10px"
 

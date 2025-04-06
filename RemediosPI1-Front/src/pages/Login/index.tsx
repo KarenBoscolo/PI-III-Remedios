@@ -89,7 +89,7 @@ export default function Login() {
         bgSize="cover"
         bgRepeat="no-repeat"
       >
-        <Box boxSize="md" bg="#00834F" p="10" borderRadius="md" boxShadow="md">
+        <Box boxSize="md" bg="#FFF" p="10" borderRadius="md" boxShadow="md" opacity='0.9'>
           <VisuallyHidden>
             <Heading as="h1">Login</Heading>
           </VisuallyHidden>
@@ -111,7 +111,7 @@ export default function Login() {
             {({ errors, touched }) => (
               <Form noValidate>
                 <FormControl h="60px">
-                  <FormLabel htmlFor="email" aria-labelledby="email" color="#fff">
+                  <FormLabel htmlFor="email" aria-labelledby="email" color="#00834F">
                     Login
                   </FormLabel>
                   <Field
@@ -139,7 +139,7 @@ export default function Login() {
                 </FormControl>
 
                 <FormControl mt={10} h="60px">
-                  <FormLabel htmlFor="senha" aria-labelledby="senha" color="#fff" >
+                  <FormLabel htmlFor="senha" aria-labelledby="senha" color="#00834F" >
                     Senha
                   </FormLabel>
                   <Field
@@ -169,20 +169,21 @@ export default function Login() {
                 <Flex direction="column" align="center">
                   <Button
                     type="submit"
-                    color="#00834F"
+                    color="#FFF"
+                    bg='#00834F'
                     width="150px"
                     mt="50px"
                     fontWeight="bold"
                     _hover={{
-                      color: "#FFF",
+                      color: "#00834F",
                       bg: "transparent",
-                      border: "1px solid #FFF"
+                      border: "1px solid #00834F"
                     }}
                   >
                     Entrar
                   </Button>
 
-                  <Text color="#FFF" fontSize="sm" mt="20px">
+                  <Text color="#00834F" fontSize="sm" mt="20px">
                     Não possui conta?{" "}
                     <Link as={RouterLink} to="cadastro" fontWeight="bold">
                       Criar conta

@@ -11,7 +11,7 @@ import { toast } from 'react-toastify'
 import { api } from '../../services/api'
 import { useEffect, useState } from 'react'
 import * as Yup from "yup"
-import LogoRemedioSolidario from '../../assets/logo-preto.png'
+import LogoRemedioSolidario from '../../assets/logo-branco-antigo.png'
 
 interface FormData {
   data: string
@@ -62,6 +62,15 @@ const validationSchema = Yup.object().shape({
   }).required("Selecione pelo menos um medicamento"),
   endereco: Yup.string(),
 })
+
+const formatedDate = (data: string | undefined) => {
+  if (!data) return ""
+  const date = new Date(data)
+  const dia = String(date.getDate()).padStart(2, "0")
+  const mes = String(date.getMonth() + 1).padStart(2, "0")
+  const ano = date.getFullYear()
+  return `${dia}/${mes}/${ano}`
+}
 
 const Dispensation = () => {
   const [patients, setPatients] = useState<FormPatients[]>([])
@@ -185,7 +194,10 @@ const Dispensation = () => {
         })
 
         if (status === 201 || status === 200) {
-          const endereco = `${postData.paciente.rua}, ${postData.paciente.numero} - ${postData.paciente.bairro}, ${postData.paciente.cidade} - ${postData.paciente.uf}, ${postData.paciente.cep}`
+          const endereco =
+            `${postData.paciente.rua}, ${postData.paciente.numero} - 
+          ${postData.paciente.bairro}, ${postData.paciente.cidade} - 
+          ${postData.paciente.uf}, ${postData.paciente.cep}`
 
           setPatients([])
 
@@ -455,14 +467,14 @@ const Dispensation = () => {
             >
               Dados do Paciente
             </Box>
-            <Flex>
+            <Flex justify='space-between'>
               <FormControl display='flex' alignItems='center'>
                 <FormLabel mb={0}>NOME:</FormLabel>
                 <Input type="text" name="nome" value={modalData?.paciente.nome} variant='unstyled' isReadOnly />
               </FormControl>
-              <FormControl display='flex' alignItems='center'>
+              <FormControl display='flex' alignItems='center' w='160px'>
                 <FormLabel mb={0}>CPF:</FormLabel>
-                <Input type="text" name="cpf" value={modalData?.paciente.cpf} variant='unstyled' isReadOnly />
+                <Input w='120px' type="text" name="cpf" value={modalData?.paciente.cpf} variant='unstyled' isReadOnly />
               </FormControl>
             </Flex>
             <Flex>
@@ -476,17 +488,17 @@ const Dispensation = () => {
             <Text fontWeight="bold" fontSize="md" >Medicamentos</Text>
             <FormControl display='flex' alignItems='center' mb={0} w='140px'>
               <FormLabel mb={0}>Data:</FormLabel>
-              <Input type="text" name="data" value={modalData?.data} variant='unstyled' isReadOnly />
+              <Input type="text" name="data" value={formatedDate(modalData?.data)} variant='unstyled' isReadOnly />
             </FormControl>
           </Flex>
           <OrderedList ml={6}>
             {modalData?.medicamentoList.map((medicamento, id) => (
               <ListItem key={id}>
-                <Flex>
-                  <Input type="text" value={medicamento.formula} w='70%' variant='unstyled' isReadOnly />
-                  <Flex >
-                    <Input type="text" value={medicamento.quantidade} w='15%' variant='unstyled' alignContent='' isReadOnly />
-                    <Text fontSize="sm" >UN - Comprimidos/Capsulas</Text>
+                <Flex justify='between'>
+                  <Input type="text" value={medicamento.formula} w='85%' variant='unstyled' isReadOnly />
+                  <Flex alignItems='baseline' gap={2}>
+                    <Input type="text" value={medicamento.quantidade} w='15%' variant='unstyled' isReadOnly />
+                    <Text fontSize="sm">UN - Comprimido(s)/Capsula(s)</Text>
                   </Flex>
                 </Flex>
               </ListItem>
