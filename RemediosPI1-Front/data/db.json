@@ -5,9 +5,15 @@
       "nomeUsuario": "Mari",
       "email": "mari@gmail.com",
       "senha": "marimari"
+    },
+    {
+      "id": "5d6b",
+      "nomeUsuario": "Felipe",
+      "email": "felipe@gmail.com",
+      "senha": "123456"
     }
   ],
-  "pacientes": [
+  "paciente": [
     {
       "id": "36b9",
       "cpf": "541.457.444-77",
@@ -47,7 +53,13 @@
       "endereco": "Rua Joaquim Azanh"
     }
   ],
-  "medicamentos": [
+  "medicamento": [
+    {
+      "id": "072d",
+      "formula": "Dipirona",
+      "quantidade": 10,
+      "vencimento": "2024-11-20"
+    },
     {
       "id": "9c30",
       "formula": "Sorine",
@@ -58,7 +70,8 @@
       "id": "b539",
       "formula": "Aziromicina",
       "quantidade": 40,
-      "vencimento": "2025-04-30"
+      "vencimento": "2025-04-30",
+      "tarja": "VERMELHA"
     }
   ],
   "prescricoes": [

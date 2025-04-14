@@ -1,4 +1,4 @@
-import { Box, Table, Thead, Tbody, Tr, Th, Td, TableContainer, Button, Flex, Tooltip, Input, FormControl, FormLabel, Heading } from '@chakra-ui/react'
+import { Box, Table, Thead, Tbody, Tr, Th, Td, TableContainer, Button, Flex, Tooltip, Input, FormControl, FormLabel, Heading, Select } from '@chakra-ui/react'
 import { Header, BaseModal, Pagination } from '../../components'
 import { MdOutlineEdit, MdDeleteOutline } from 'react-icons/md'
 import { api } from '../../services/api'
@@ -10,7 +10,15 @@ interface FormData {
   id: number
   formula: string
   quantidade: number
+  tarja: string
   vencimento: string
+}
+
+enum Tarja {
+  SEM_TARJA = 'SEM_TARJA',
+  AMARELA = 'AMARELA',
+  VERMELHA = 'VERMELHA',
+  PRETA = 'PRETA',
 }
 
 const MedicamentRegistration = () => {
@@ -33,6 +41,20 @@ const MedicamentRegistration = () => {
 
     fetchData()
   }, [])
+
+  const tarjaLabel: Record<Tarja, string> = {
+    SEM_TARJA: 'Sem tarja',
+    AMARELA: 'Amarela',
+    VERMELHA: 'Vermelha',
+    PRETA: 'Preta',
+  }
+
+  const tarjaBgColor: Record<Tarja, string> = {
+    SEM_TARJA: '#FFF',
+    AMARELA: 'yellow.100',
+    VERMELHA: 'red.100',
+    PRETA: 'gray.100',
+  }
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber)
@@ -65,11 +87,13 @@ const MedicamentRegistration = () => {
     }
   }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target
     if (editedMedicament) {
       const updatedMedicament = {
-        ...(editedMedicament as FormData),
+        ...editedMedicament,
         [name]: value,
       }
       setEditedMedicament(updatedMedicament)
@@ -102,6 +126,7 @@ const MedicamentRegistration = () => {
               <Thead>
                 <Tr>
                   <Th>Medicamento</Th>
+                  <Th>Tarja</Th>
                   <Th>Quantidade</Th>
                   <Th>Data de Validade</Th>
                   <Th></Th>
@@ -110,7 +135,8 @@ const MedicamentRegistration = () => {
               <Tbody>
                 {getCurrentMedicaments().map(medicament => (
                   <Tr key={medicament.id} >
-                    <Td w='50%'>{medicament.formula}</Td>
+                    <Td w='25%'>{medicament.formula}</Td>
+                    <Td w="25%" bg={tarjaBgColor[medicament.tarja as Tarja]}>{tarjaLabel[medicament.tarja as Tarja]}</Td>
                     <Td w='20%'>{medicament.quantidade}</Td>
                     <Td w='20%'><FormattedDate date={new Date(medicament.vencimento)} /></Td>
                     <Td>
@@ -162,6 +188,21 @@ const MedicamentRegistration = () => {
           <FormControl>
             <FormLabel>Medicamento</FormLabel>
             <Input type="text" name="formula" value={editedMedicament?.formula} onChange={handleInputChange} />
+          </FormControl>
+          <FormControl>
+            <FormLabel mt={4}>Tarja</FormLabel>
+            <Select 
+              id="tarja" 
+              name="tarja"
+              value={editedMedicament?.tarja}
+              onChange={handleInputChange}
+            >
+              <option value="">Selecione a tarja...</option>
+              <option value="SEM_TARJA">Sem tarja</option>
+              <option value="AMARELA">Amarela</option>
+              <option value="VERMELHA">Vermelha</option>
+              <option value="PRETA">Preta</option>
+            </Select>
           </FormControl>
           <FormControl>
             <FormLabel mt={4}>Quantidade</FormLabel>
