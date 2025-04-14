@@ -119,7 +119,6 @@ export default function Login() {
                     id="email"
                     name="email"
                     type="login"
-                    color="#fff"
                     autoComplete="username"
                     placeholder="Digite o e-mail cadastrado"
                     _focus={{
@@ -148,7 +147,6 @@ export default function Login() {
                     id="senha"
                     name="senha"
                     type="password"
-                    color="#fff"
                     autoComplete="current-password"
                     placeholder="Digite a senha"
                     _focus={{
