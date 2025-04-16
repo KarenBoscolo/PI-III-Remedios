@@ -135,7 +135,7 @@ const MedicamentRegistration = () => {
               <Tbody>
                 {getCurrentMedicaments().map(medicament => (
                   <Tr key={medicament.id} >
-                    <Td w='25%'>{medicament.formula}</Td>
+                    <Td w='30%'>{medicament.formula}</Td>
                     <Td w="25%" bg={tarjaBgColor[medicament.tarja as Tarja]}>{tarjaLabel[medicament.tarja as Tarja]}</Td>
                     <Td w='20%'>{medicament.quantidade}</Td>
                     <Td w='20%'><FormattedDate date={new Date(medicament.vencimento)} /></Td>

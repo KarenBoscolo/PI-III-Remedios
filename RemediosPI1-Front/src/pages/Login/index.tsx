@@ -89,7 +89,7 @@ export default function Login() {
         bgSize="cover"
         bgRepeat="no-repeat"
       >
-        <Box boxSize="md" bg="#FFF" p="10" borderRadius="md" boxShadow="md" opacity='0.9'>
+        <Box boxSize="md" bg="#FFF" p="10" borderRadius="md" boxShadow="2xl" opacity='0.9'>
           <VisuallyHidden>
             <Heading as="h1">Login</Heading>
           </VisuallyHidden>

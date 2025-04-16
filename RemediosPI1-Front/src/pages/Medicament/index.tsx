@@ -139,7 +139,7 @@ const Medicament = () => {
                   bg="#00834F"
                   color="#FFF"
                   width='20%'
-                  mt="260px"
+                  mt="160px"
                   fontWeight="bold"
                   type='submit'
                   _hover={{

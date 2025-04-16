@@ -5,381 +5,115 @@
       "nomeUsuario": "Mari",
       "email": "mari@gmail.com",
       "senha": "marimari"
-    },
-    {
-      "id": "5d6b",
-      "nomeUsuario": "Felipe",
-      "email": "felipe@gmail.com",
-      "senha": "123456"
     }
   ],
   "paciente": [
     {
-      "id": "36b9",
-      "cpf": "541.457.444-77",
-      "nome": "Maria das Dores",
-      "rua": "Rua da Saudade",
-      "numero": "41",
-      "bairro": "Centro",
+      "id": "6377",
+      "cpf": "587.458.655-22",
+      "nome": "João da Silva Rocha",
+      "rua": "Rua Perpétua Aparecida Fernandes Innarelli",
+      "numero": "77",
+      "bairro": "Vila Marques-Sarchi",
+      "complemento": "Ap 91",
+      "cep": "13724044",
+      "cidade": "São José do Rio Pardo",
+      "uf": "SP",
+      "telefone": "(19) 98787-4145"
+    },
+    {
+      "id": "933d",
+      "cpf": "135.747.855-58",
+      "nome": "Pedro Alvares Cabral",
+      "rua": "Quadra ARSE 71 Alameda 8",
+      "numero": "13",
+      "bairro": "Plano Diretor Sul",
       "complemento": "Casa",
-      "cidade": "Rio Pardo",
-      "uf": "SP",
-      "telefone": "(19) 52545-4585"
+      "cep": "77022316",
+      "cidade": "Palmas",
+      "uf": "TO",
+      "telefone": "(21) 98747-5232"
     },
     {
-      "id": "ba4d",
-      "cpf": "439.837.308-09",
-      "nome": "Felipe",
-      "rua": "Rua Joaquim Azanha",
-      "numero": "21",
-      "bairro": "Jardim da Mata",
-      "complemento": "",
-      "cidade": "Americana",
-      "uf": "São Paulo",
-      "telefone": "(19) 98176-3841"
-    },
-    {
-      "id": "1e64",
-      "cpf": "455.180.778-82",
-      "nome": "Felipe Marcelino Do Nascimento",
-      "rua": "Rua Dos Campos",
-      "numero": "28",
-      "bairro": "Jardim da Mata",
-      "complemento": "",
-      "cidade": "Americana",
+      "id": "3512",
+      "cpf": "247.852.145-85",
+      "nome": "Elis Regina Ramalho",
+      "rua": "Rua Fujiyama",
+      "numero": "1235",
+      "bairro": "Taboão",
+      "complemento": "Casa",
+      "cep": "09940270",
+      "cidade": "Diadema",
       "uf": "SP",
-      "telefone": "(19) 98176-3841",
-      "cep": "13476-404",
-      "endereco": "Rua Joaquim Azanh"
+      "telefone": "(11) 98756-3256"
     }
   ],
   "medicamento": [
     {
-      "id": "072d",
+      "id": "3c1e",
+      "formula": "Azitromicina",
+      "quantidade": 20,
+      "tarja": "VERMELHA",
+      "vencimento": "2025-06-30"
+    },
+    {
+      "id": "8a0f",
+      "formula": "Aspirina",
+      "quantidade": 30,
+      "tarja": "SEM_TARJA",
+      "vencimento": "2025-07-24"
+    },
+    {
+      "id": "b7d8",
+      "formula": "Alprazolan",
+      "quantidade": 25,
+      "tarja": "PRETA",
+      "vencimento": "2025-06-30"
+    },
+    {
+      "id": "bf4a",
       "formula": "Dipirona",
+      "quantidade": 50,
+      "tarja": "SEM_TARJA",
+      "vencimento": "2025-10-14"
+    },
+    {
+      "id": "e428",
+      "formula": "Amytril",
       "quantidade": 10,
-      "vencimento": "2024-11-20"
-    },
-    {
-      "id": "9c30",
-      "formula": "Sorine",
-      "quantidade": 44,
-      "vencimento": "2025-01-10"
-    },
-    {
-      "id": "b539",
-      "formula": "Aziromicina",
-      "quantidade": 40,
-      "vencimento": "2025-04-30",
-      "tarja": "VERMELHA"
+      "tarja": "VERMELHA",
+      "vencimento": "2025-04-30"
     }
   ],
-  "prescricoes": [
+  "prescricao": [
     {
-      "id": "229f",
-      "data": "2024-11-02",
+      "id": "30bc",
+      "data": "2025-04-15",
       "paciente": {
-        "id": "36b9",
-        "cpf": "541.457.444-77",
-        "nome": "Maria das Dores",
-        "rua": "Rua da Saudade",
-        "numero": "41",
-        "bairro": "Centro",
-        "complemento": "Casa",
-        "cidade": "Rio Pardo",
+        "id": "6377",
+        "cpf": "587.458.655-22",
+        "nome": "João da Silva Rocha",
+        "rua": "Rua Perpétua Aparecida Fernandes Innarelli",
+        "numero": "77",
+        "bairro": "Vila Marques-Sarchi",
+        "complemento": "Ap 91",
+        "cep": "13724044",
+        "cidade": "São José do Rio Pardo",
         "uf": "SP",
-        "telefone": "(19) 52545-4585"
+        "telefone": "(19) 98787-4145"
       },
       "medicamentos": [
         {
-          "id": "9c30",
-          "formula": "Sorine",
-          "quantidade": 1,
-          "vencimento": "2025-01-10"
-        },
-        {
-          "id": "072d",
-          "formula": "Dipirona",
+          "id": "3c1e",
+          "formula": "Azitromicina",
           "quantidade": 5,
-          "vencimento": "2024-11-20"
-        }
-      ]
-    },
-    {
-      "id": "c766",
-      "data": "2025-04-06",
-      "paciente": {
-        "id": "36b9",
-        "cpf": "541.457.444-77",
-        "nome": "Maria das Dores",
-        "rua": "Rua da Saudade",
-        "numero": "41",
-        "bairro": "Centro",
-        "complemento": "Casa",
-        "cidade": "Rio Pardo",
-        "uf": "SP",
-        "telefone": "(19) 52545-4585"
-      },
-      "medicamentos": [
+          "vencimento": "2025-06-30"
+        },
         {
-          "id": "072d",
+          "id": "bf4a",
           "formula": "Dipirona",
           "quantidade": 10,
-          "vencimento": "2024-11-20"
-        },
-        {
-          "id": "9c30",
-          "formula": "Sorine",
-          "quantidade": 4,
-          "vencimento": "2025-01-10"
-        }
-      ]
-    },
-    {
-      "id": "4b19",
-      "data": "2025-04-06",
-      "paciente": {
-        "id": "ba4d",
-        "cpf": "439.837.308-09",
-        "nome": "Felipe",
-        "rua": "Rua Joaquim Azanha",
-        "numero": "21",
-        "bairro": "Jardim da Mata",
-        "complemento": "",
-        "cidade": "Americana",
-        "uf": "São Paulo",
-        "telefone": "(19) 98176-3841"
-      },
-      "medicamentos": [
-        {
-          "id": "9c30",
-          "formula": "Sorine",
-          "quantidade": 41,
-          "vencimento": "2025-01-10"
-        },
-        {
-          "id": "072d",
-          "formula": "Dipirona",
-          "quantidade": 33,
-          "vencimento": "2024-11-20"
-        }
-      ]
-    },
-    {
-      "id": "7afc",
-      "data": "2025-04-06",
-      "paciente": {
-        "id": "36b9",
-        "cpf": "541.457.444-77",
-        "nome": "Maria das Dores",
-        "rua": "Rua da Saudade",
-        "numero": "41",
-        "bairro": "Centro",
-        "complemento": "Casa",
-        "cidade": "Rio Pardo",
-        "uf": "SP",
-        "telefone": "(19) 52545-4585"
-      },
-      "medicamentos": [
-        {
-          "id": "9c30",
-          "formula": "Sorine",
-          "quantidade": 1,
-          "vencimento": "2025-01-10"
-        },
-        {
-          "id": "072d",
-          "formula": "Dipirona",
-          "quantidade": 2,
-          "vencimento": "2024-11-20"
-        }
-      ]
-    },
-    {
-      "id": "f7e0",
-      "data": "2025-04-06",
-      "paciente": {
-        "id": "36b9",
-        "cpf": "541.457.444-77",
-        "nome": "Maria das Dores",
-        "rua": "Rua da Saudade",
-        "numero": "41",
-        "bairro": "Centro",
-        "complemento": "Casa",
-        "cidade": "Rio Pardo",
-        "uf": "SP",
-        "telefone": "(19) 52545-4585"
-      },
-      "medicamentos": [
-        {
-          "id": "072d",
-          "formula": "Dipirona",
-          "quantidade": 4,
-          "vencimento": "2024-11-20"
-        },
-        {
-          "id": "9c30",
-          "formula": "Sorine",
-          "quantidade": 1,
-          "vencimento": "2025-01-10"
-        }
-      ]
-    },
-    {
-      "id": "5c63",
-      "data": "2025-04-06",
-      "paciente": {
-        "id": "36b9",
-        "cpf": "541.457.444-77",
-        "nome": "Maria das Dores",
-        "rua": "Rua da Saudade",
-        "numero": "41",
-        "bairro": "Centro",
-        "complemento": "Casa",
-        "cidade": "Rio Pardo",
-        "uf": "SP",
-        "telefone": "(19) 52545-4585"
-      },
-      "medicamentos": [
-        {
-          "id": "072d",
-          "formula": "Dipirona",
-          "quantidade": 1,
-          "vencimento": "2024-11-20"
-        }
-      ]
-    },
-    {
-      "id": "b694",
-      "data": "2025-04-06",
-      "paciente": {
-        "id": "1e64",
-        "cpf": "455.180.778-82",
-        "nome": "Felipe Marcelino Do Nascimento",
-        "rua": "Rua Dos Campos",
-        "numero": "28",
-        "bairro": "Jardim da Mata",
-        "complemento": "",
-        "cidade": "Americana",
-        "uf": "SP",
-        "telefone": "(19) 98176-3841",
-        "cep": "13476-404",
-        "endereco": "Rua Joaquim Azanh"
-      },
-      "medicamentos": [
-        {
-          "id": "072d",
-          "formula": "Dipirona",
-          "quantidade": 10,
-          "vencimento": "2024-11-20"
-        }
-      ]
-    },
-    {
-      "id": "530f",
-      "data": "2025-04-06",
-      "paciente": {
-        "id": "36b9",
-        "cpf": "541.457.444-77",
-        "nome": "Maria das Dores",
-        "rua": "Rua da Saudade",
-        "numero": "41",
-        "bairro": "Centro",
-        "complemento": "Casa",
-        "cidade": "Rio Pardo",
-        "uf": "SP",
-        "telefone": "(19) 52545-4585"
-      },
-      "medicamentos": [
-        {
-          "id": "9c30",
-          "formula": "Sorine",
-          "quantidade": 100,
-          "vencimento": "2025-01-10"
-        }
-      ]
-    },
-    {
-      "id": "09d9",
-      "data": "2025-04-06",
-      "paciente": {
-        "id": "ba4d",
-        "cpf": "439.837.308-09",
-        "nome": "Felipe",
-        "rua": "Rua Joaquim Azanha",
-        "numero": "21",
-        "bairro": "Jardim da Mata",
-        "complemento": "",
-        "cidade": "Americana",
-        "uf": "São Paulo",
-        "telefone": "(19) 98176-3841"
-      },
-      "medicamentos": [
-        {
-          "id": "9c30",
-          "formula": "Sorine",
-          "quantidade": 40,
-          "vencimento": "2025-01-10"
-        },
-        {
-          "id": "072d",
-          "formula": "Dipirona",
-          "quantidade": 5,
-          "vencimento": "2024-11-20"
-        }
-      ]
-    },
-    {
-      "id": "9201",
-      "data": "2025-04-06",
-      "paciente": {
-        "id": "36b9",
-        "cpf": "541.457.444-77",
-        "nome": "Maria das Dores",
-        "rua": "Rua da Saudade",
-        "numero": "41",
-        "bairro": "Centro",
-        "complemento": "Casa",
-        "cidade": "Rio Pardo",
-        "uf": "SP",
-        "telefone": "(19) 52545-4585"
-      },
-      "medicamentos": [
-        {
-          "id": "072d",
-          "formula": "Dipirona",
-          "quantidade": 10,
-          "vencimento": "2024-11-20"
-        }
-      ]
-    },
-    {
-      "id": "d818",
-      "data": "2025-04-06",
-      "paciente": {
-        "id": "36b9",
-        "cpf": "541.457.444-77",
-        "nome": "Maria das Dores",
-        "rua": "Rua da Saudade",
-        "numero": "41",
-        "bairro": "Centro",
-        "complemento": "Casa",
-        "cidade": "Rio Pardo",
-        "uf": "SP",
-        "telefone": "(19) 52545-4585"
-      },
-      "medicamentos": [
-        {
-          "id": "9c30",
-          "formula": "Sorine",
-          "quantidade": 10,
-          "vencimento": "2025-01-10"
-        },
-        {
-          "id": "b539",
-          "formula": "Aziromicina",
-          "quantidade": 5,
-          "vencimento": "2025-04-30"
+          "vencimento": "2025-10-14"
         }
       ]
     }

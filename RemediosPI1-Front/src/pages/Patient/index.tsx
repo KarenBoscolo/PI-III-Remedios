@@ -1,4 +1,4 @@
-import { Box, Button, Flex, FormControl, FormLabel, Heading, Input, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, FormControl, FormLabel, Heading, Input, InputGroup, InputRightElement, Text } from '@chakra-ui/react'
 import { Header } from '../../components'
 import { Formik, Field, Form, FormikHelpers } from 'formik'
 import { IoSearch } from "react-icons/io5"
@@ -75,7 +75,6 @@ const Patient = () => {
   })
 
   const zipCodeConsultation = (
-    // e: React.FocusEvent<HTMLInputElement>,
     setFieldValue: (field: string, value: unknown, shouldValidate?: boolean) => void,
     setFieldTouched: (field: string, isTouched?: boolean, shouldValidate?: boolean) => void,
     cep: string
@@ -198,30 +197,37 @@ const Patient = () => {
                 </FormControl>
               </FormControl>
 
-              <FormControl mt={7}>
-                <FormLabel color='#808080'>Endereço</FormLabel>
-                <FormControl display='flex' alignItems='center' gap={15} >
-                  <FormControl w='300px' position='absolute'>
-                    <Field
-                      as={Input}
-                      id='cep'
-                      name='cep'
-                      type='text'
-                      placeholder='CEP'
-                      _focus={{
-                        borderColor: "gray.700",
-                        boxShadow: "none",
-                      }}
-                      data-testid="cep"
-                    />
-                    {errors.cep && touched.cep && <Text color='#ff0000' fontSize={14} fontWeight='500' pl={1} position='absolute' left={0} bottom='-20px'>{errors.cep}</Text>}
-                  </FormControl>
-                  <Button variant="plain" position='relative' left='250px'
-                    onClick={() => zipCodeConsultation(setFieldValue, setFieldTouched, values.cep)}
+              <FormControl mt={7} w="300px">
+                <FormLabel color='#808080'>CEP</FormLabel>
+                <InputGroup>
+                  <Field
+                    as={Input}
+                    id="cep"
+                    name="cep"
+                    type="text"
+                    placeholder="CEP"
+                    _focus={{
+                      borderColor: "gray.700",
+                      boxShadow: "none",
+                    }}
+                    data-testid="cep"
+                  />
+                  <InputRightElement
+                    cursor="pointer"
+                    onClick={() => {
+                      const inputCep = (document.getElementById("cep") as HTMLInputElement)?.value
+                      zipCodeConsultation(setFieldValue, setFieldTouched, inputCep)
+                    }}
                   >
-                    <IoSearch color='#00834F' />
-                  </Button>
-                </FormControl>
+                    <IoSearch color="#00834F" />
+                  </InputRightElement>
+                </InputGroup>
+
+                {errors.cep && touched.cep && (
+                  <Text color="#ff0000" fontSize={14} fontWeight="500" pl={1} mt={1}>
+                    {errors.cep}
+                  </Text>
+                )}
               </FormControl>
 
               <FormControl mt={7}>
